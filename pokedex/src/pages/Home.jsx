@@ -1,12 +1,12 @@
-import { Platform, StyleSheet, Text, View, useColorScheme, ScrollView, SafeAreaView, TextInput, Button } from 'react-native'; //StatusBar
+import { Platform, StyleSheet, Text, View, useColorScheme, ScrollView, SafeAreaView, TextInput, Button, Pressable } from 'react-native'; //StatusBar
 import * as React from 'react'
- export const Home =()=>{
+ export const Home =({navigation})=>{
 
     return(
         <>
         <View style={styles.container}>
            <Text style={styles.text}>Pokedex</Text>
-           <button style={styles.button}  >Enter</button>
+           <Pressable style={styles.button} onPress={() => navigation.navigate('Search') } title='Enter' >Enter</Pressable>
         </View>
         </>
     )
@@ -31,6 +31,8 @@ const styles = StyleSheet.create({
         backdropFilter: "blur(5px)",
         borderRadius: 5,
         fontWeight: 'bold',
+        paddingHorizontal: '1em',
+        paddingVertical: '.5em',
     }
   });
 

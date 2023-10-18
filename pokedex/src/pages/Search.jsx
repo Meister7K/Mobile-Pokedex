@@ -1,7 +1,13 @@
 import { Platform, StyleSheet, Text, View, useColorScheme, ScrollView, SafeAreaView, TextInput, Pressable } from 'react-native'; //StatusBar
-import * as React from 'react'
+import React,{ useState} from 'react'
+import { PokeCall } from '../calls/PokeCall';
+import { useState } from 'react';
 
-export const Search = () => {
+export const Search = ({navigation}) => {
+
+    const [input, setInput] = useState();
+
+    //! const getInput=()
 
 
 
@@ -10,9 +16,8 @@ export const Search = () => {
         <View style={styles.container}>
            <Text>Search a Pokename or #</Text>
             <TextInput style={styles.input} placeholder='ex. pikachu/25'></TextInput>
-            <Pressable  style={styles.button} title='Search'>Search</Pressable> 
-        </View>
-            
+            <Pressable  style={styles.button} title='Search' onPress={() => navigation.navigate('PokePage')}>Search</Pressable> 
+        </View>  
         </>
     )
 }

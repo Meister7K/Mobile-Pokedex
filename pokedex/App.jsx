@@ -6,6 +6,7 @@ import { createNativeStackNavigator } from '@react-navigation/native-stack';
 // import type { Node } from 'react'
 import {Home} from './src/pages/Home';
 import {Search} from './src/pages/Search'
+import { PokePage } from './src/pages/PokePage';
 
 
 const Stack = createNativeStackNavigator();
@@ -21,6 +22,7 @@ export default function App() {
       <Stack.Navigator initialRouteName="Home" >
         <Stack.Screen name='Home' component={Home} options={{title: ''}} />
         <Stack.Screen name='Search' component={Search}/>
+        <Stack.Screen name='PokePage' component={PokePage}/>
       </Stack.Navigator>
       {/* <Home/> */}
     </NavigationContainer>

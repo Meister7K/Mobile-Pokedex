@@ -1,13 +1,26 @@
-import { Platform, StyleSheet, Text, View, useColorScheme, ScrollView, SafeAreaView, TextInput, Button, Pressable } from 'react-native'; //StatusBar
+import { Platform, StyleSheet, Text, View, useColorScheme, ScrollView, SafeAreaView, TextInput, Button, Pressable, Image } from 'react-native'; //StatusBar
 import * as React from 'react'
+import Img from '../../assets/pokeball.svg'
+import { MyBtn } from '../components/MyBtn';
+
+
+
  export const Home =({navigation})=>{
+
+  const navSearch =()=>{
+    navigation.navigate('Search')
+  }
 
     return(
         <>
-        <View style={styles.container}>
-           <Text style={styles.text}>Pokedex</Text>
-           <Pressable style={styles.button} onPress={() => navigation.navigate('Search') } title='Enter' >Enter</Pressable>
-        </View>
+        <SafeAreaView style={styles.container}>
+          <Text style={styles.text}>
+            Pokedex
+          </Text>
+          <Image source={Img} style={styles.img} />
+         <MyBtn buttonText={'Enter'} onPress={navSearch}/>
+          
+        </SafeAreaView>
         </>
     )
 }
@@ -23,7 +36,7 @@ const styles = StyleSheet.create({
     text:{
       fontWeight: 'bold',
       fontSize: '3em',
-      textAlign: 'center'
+      textAlign: 'center',
       
     },
     button:{
@@ -33,7 +46,12 @@ const styles = StyleSheet.create({
         fontWeight: 'bold',
         paddingHorizontal: '1em',
         paddingVertical: '.5em',
-    }
+    },
+    img:{
+      width: 100,
+      height: 100,
+      margin: '1em'
+  }
   });
 
 // export default Home

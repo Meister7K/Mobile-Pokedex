@@ -1,23 +1,22 @@
-import { Platform, StyleSheet, Text, View, useColorScheme, ScrollView, SafeAreaView, TextInput, Pressable } from 'react-native'; //StatusBar
-import React,{ useState} from 'react'
+import { Platform, StyleSheet, Text, View, useColorScheme, ScrollView, SafeAreaView, TextInput, Pressable, Button } from 'react-native'; //StatusBar
+import React,{ useState, useNavigation} from 'react'
 import { PokeCall } from '../calls/PokeCall';
-import { useState } from 'react';
+import { SearchComp } from '../components/SearchComp';
+// import { useState } from 'react';
 
-export const Search = ({navigation}) => {
+export const Search = () => {
 
     const [input, setInput] = useState();
-
-    //! const getInput=()
-
 
 
     return (
         <>
-        <View style={styles.container}>
+        <SafeAreaView style={styles.container}>
            <Text>Search a Pokename or #</Text>
-            <TextInput style={styles.input} placeholder='ex. pikachu/25'></TextInput>
-            <Pressable  style={styles.button} title='Search' onPress={() => navigation.navigate('PokePage')}>Search</Pressable> 
-        </View>  
+           <SearchComp/>
+
+
+        </SafeAreaView>  
         </>
     )
 }

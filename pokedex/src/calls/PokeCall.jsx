@@ -19,6 +19,7 @@ export const PokeCall=( pokemon) =>{
     }
     finally{
         setLoading(false)
+        console.log(pokeData)
     }
   }
 
@@ -29,5 +30,5 @@ export const PokeCall=( pokemon) =>{
 //   })
 
 
-    return [loading, error, data]
+    return [loading, error, pokeData]
 }

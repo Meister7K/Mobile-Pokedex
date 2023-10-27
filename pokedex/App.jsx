@@ -24,7 +24,6 @@ export default function App() {
         <Stack.Screen name='Search' component={Search}/>
         <Stack.Screen name='PokePage' component={PokePage}/>
       </Stack.Navigator>
-      {/* <Home/> */}
     </NavigationContainer>
         
     </>

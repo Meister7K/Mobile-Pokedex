@@ -71,18 +71,21 @@ export const SearchComp = () =>{
         <>
         <ScrollView >
         <View style={styles.container}>
-            <TextInput style={styles.textInput} placeholder='pikachu or 25' value={input} onChangeText={text => setInput(text)}/>
+            <TextInput style={styles.textInput} placeholder='pikachu or 25' value={input} onChangeText={text => setInput(text)} autoCorrect autoComplete='name' keyboardAppearance='dark' spellCheck={false} />
             <MyBtn buttonText={'Search'} onPress={handleSearch}/>
 
-            {loading ? <ActivityIndicator size={'large'}/>:''}
-            { error ? <Text>{error}</Text> : ''}
+            {error ? <Text>{error}</Text> : loading ? <ActivityIndicator size={'large'}/> : ''}
+            { }
              {pokeData ? (<>
+             <View style={styles.container}>
              <TouchableOpacity onPress={handleLink}>
-                <Text>{pokeData.name}</Text>
+                <Text>{`#${pokeData.id} ${pokeData.name}`}</Text>
             </TouchableOpacity>
              
              <Image style={styles.img} source={pokeData.sprites.other["official-artwork"].front_default}/>
              <Image style={styles.img} source={pokeData.sprites.other["official-artwork"].front_shiny}/>
+
+             
              <Text>Type(s): {`${pokeData.types[0].type.name}`}{pokeData.types.length > 1 ? `/${pokeData.types[1].type.name}`: ''} </Text>
             
              <Text>Base Stats</Text>
@@ -92,15 +95,16 @@ export const SearchComp = () =>{
              </>:''}
              
 
-             <Text>Moves</Text>
+             <Text>Moves:</Text>
              {moves.length > 0 ? <>
-                {moves.sort((a,b)=> a.move.name.localeCompare( b.move.name)).map((move, i) => (
+                {moves.sort((a,b)=> a.move.name.localeCompare( b.move.name)).map((move, i) => (<>
                                         <Text key={i}>{move.move.name}:  {move.version_group_details[0].move_learn_method.name !== 'machine' ? `Level ${move.version_group_details[0].level_learned_at}` : 'TM'}</Text>
-                                    ))}
+                                        {/* <Text>{move.move.url}</Text> */}
+                                    </>))}
              </>:''}
              
 
-            </>) : ''}
+            </View></>) : ''}
 
         </View>
         </ScrollView>
@@ -111,15 +115,15 @@ export const SearchComp = () =>{
 
 const styles = StyleSheet.create({
     textInput:{
-        backgroundColor: 'white',
+        // backgroundColor: 'white',
         borderRadius: 2,
-        border: '2px inset white',
+        // border: '2px inset white',
         padding: 5,
     },
     img:{
         width: 100,
         height: 100,
-        margin: '1em'
+        margin: 'auto'
     },
     container: {
         flex: 1,
